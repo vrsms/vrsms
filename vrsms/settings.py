@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Local Apps
     'repairs.apps.CoreConfig',
+    'vehicles.apps.VehiclesConfig',
 ]
 
 MIDDLEWARE = [
@@ -128,15 +129,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 JAZZMIN_SETTINGS = {
-    "site_title": "your_site_name",
-    "site_header": "your_site_header",
-    "site_brand": "your_site_brand",
+    "site_title": "VRSMS Admin",
+    "site_header": "VRSMS",
+    "site_brand": "VRSMS",
     "site_icon": "images/favicon.png",
     # Add your own branding here
     "site_logo": None,
-    "welcome_sign": "Welcome to the your_site_name",
+    "welcome_sign": "Welcome to the VRSMS",
     # Copyright on the footer
-    "copyright": "your_site_name",
+    "copyright": "VRSMS",
     "user_avatar": None,
     ############
     # Top Menu #
