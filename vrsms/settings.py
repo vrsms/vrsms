@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Local Apps
-    'repairs.apps.CoreConfig',
+    'repairs.apps.RepairsConfig',
     'vehicles.apps.VehiclesConfig',
     'services.apps.ServicesConfig',
 ]
