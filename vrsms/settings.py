@@ -41,8 +41,9 @@ INSTALLED_APPS = [
 
     # Local Apps
     'repairs.apps.RepairsConfig',
-    'vehicles.apps.VehiclesConfig',
     'services.apps.ServicesConfig',
+    'suggestions.apps.SuggestionsConfig',
+    'vehicles.apps.VehiclesConfig',
 ]
 
 MIDDLEWARE = [
@@ -168,6 +169,7 @@ JAZZMIN_SETTINGS = {
         "admin.LogEntry": "fas fa-file",
         "vehicles.vehicle": "fas fa-car",
         "services.serviceticket": "fas fa-bolt",
+        "repairs.repairticket": "fas fa-bolt",
     },
     # # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",

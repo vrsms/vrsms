@@ -24,4 +24,4 @@ class RepairTicket(Ticket.Ticket):
         verbose_name_plural = 'Repair Tickets'
 
     def __str__(self):
-        return self.frequency
+        return self.title
