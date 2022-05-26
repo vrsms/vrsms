@@ -1,6 +1,7 @@
 from django.db import models
 from vehicles.models import Vehicle
 from django.utils.translation import ugettext_lazy as _
+import uuid
 
 
 # Create your models here.
@@ -8,7 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 
 class ServiceTicket(models.Model):
     """Model definition for Service Ticket."""
-
+    # ref_no = models.CharField(primary_key=True, default=uuid.uuid4().hex[:5].upper(), max_length=50, editable=True)
+    ref_no = models.UUIDField(primary_key=True, default=uuid.uuid4, max_length=50, editable=True)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=30)
     status = models.CharField(_('Operation status'), max_length=30)
@@ -25,3 +27,7 @@ class ServiceTicket(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ServiceSchedule(models.Model):
+    ref = models.CharField(_('Reference'), max_length=30)
