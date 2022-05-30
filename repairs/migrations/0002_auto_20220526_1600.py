@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='ticket',
-            name='ref_no',
+            name='reference',
             field=models.CharField(default='ACE0D', editable=False, max_length=50, primary_key=True, serialize=False),
         ),
     ]

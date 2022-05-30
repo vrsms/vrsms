@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='ticket',
-            name='ref_no',
+            name='reference',
             field=models.CharField(default='81D5A', editable=False, max_length=50, primary_key=True, serialize=False),
         ),
     ]

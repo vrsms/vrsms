@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='serviceticket',
-            name='ref_no',
+            name='reference',
             field=models.CharField(default='44F6B', editable=False, max_length=50, primary_key=True, serialize=False),
         ),
     ]

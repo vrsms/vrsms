@@ -9,6 +9,7 @@ import uuid
 
 class ServiceTicket(models.Model):
     """Model definition for Service Ticket."""
+
     # ref_no = models.CharField(primary_key=True, default=uuid.uuid4().hex[:5].upper(), max_length=50, editable=True)
     ref_no = models.UUIDField(primary_key=True, default=uuid.uuid4, max_length=50, editable=True)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)

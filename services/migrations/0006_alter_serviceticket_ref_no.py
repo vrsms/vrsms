@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='serviceticket',
-            name='ref_no',
+            name='reference',
             field=models.UUIDField(default=uuid.UUID('3ac55c12-a491-42b4-9fdc-a00c1cac0812'), primary_key=True, serialize=False),
         ),
     ]
