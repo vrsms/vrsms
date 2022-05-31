@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -5,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 class Vehicle(models.Model):
     """Model definition for Vehicle."""
-
+    driver = models.ForeignKey(User, on_delete=models.CASCADE)
     make = models.CharField(_("Make"), max_length=30)
     model = models.CharField('vehicle_model', max_length=30)
     plate_number = models.CharField('Plate number', max_length=30)

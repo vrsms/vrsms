@@ -180,7 +180,7 @@ JAZZMIN_SETTINGS = {
         "admin.LogEntry": "fas fa-file",
         "vehicles.vehicle": "fas fa-car",
         "services.serviceticket": "fas fa-bolt",
-        "repairs.repairticket": "fas fa-bolt",
+        "repairs.repairticket": "fas fa-charging-station",
     },
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)

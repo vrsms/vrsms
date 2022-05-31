@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from vehicles.models import Vehicle
 from django.utils.translation import ugettext_lazy as _
 import uuid
@@ -11,6 +12,7 @@ class ServiceTicket(models.Model):
     """Model definition for Service Ticket."""
 
     # ref_no = models.CharField(primary_key=True, default=uuid.uuid4().hex[:5].upper(), max_length=50, editable=True)
+    driver = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     ref_no = models.UUIDField(primary_key=True, default=uuid.uuid4, max_length=50, editable=True)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=30)

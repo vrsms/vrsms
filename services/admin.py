@@ -12,7 +12,6 @@ class PostAdmin(admin.ModelAdmin):
     """Admin View for Service Ticket"""
 
     list_display = (
-        'ref_no',
         'title',
         'cost',
         'date',
