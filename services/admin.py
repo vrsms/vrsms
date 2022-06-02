@@ -32,3 +32,8 @@ class ServiceTicketAdmin(admin.ModelAdmin):
             form.base_fields['approval_status'].disabled = True
 
         return form
+
+    def show_average(self, obj):
+        from django.db.models import Avg
+        result = ServiceTicket.objects.filter(person=obj).aggregate(Avg("grade"))
+        return result["grade__avg"]

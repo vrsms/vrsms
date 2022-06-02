@@ -34,6 +34,9 @@ class ServiceTicket(models.Model):
             ("close_service_ticket", "Can remove a service ticket by setting its status as closed"),
         ]
 
+        ordering = ("ref_no", "title", "driver", "vehicle", "approval_status", "item_serviced", "frequency", "cost",
+                    "date")
+
     def __str__(self):
         return self.title
 

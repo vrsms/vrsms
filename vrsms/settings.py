@@ -144,9 +144,9 @@ JAZZMIN_SETTINGS = {
     "site_title": "VRSMS Admin",
     "site_header": "VRSMS",
     "site_brand": "VRSMS",
-    "site_icon": "images/favicon.png",
+    "site_icon": "images/favicon.ico",
     # Add your own branding here
-    "site_logo": None,
+    "site_logo": "images/logo.png",
     "welcome_sign": "Welcome to the VRSMS",
     # Copyright on the footer
     "copyright": "VRSMS",

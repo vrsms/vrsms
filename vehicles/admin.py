@@ -10,9 +10,8 @@ class PostAdmin(admin.ModelAdmin):
     """Admin View for Vehicle"""
 
     list_display = (
-        'make',
+        'plate_number',
         'model',
-
         'category',
         'status',
     )
