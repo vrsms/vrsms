@@ -7,7 +7,7 @@ import uuid
 
 class Ticket(models.Model):
     """Model definition for Ticket."""
-    # ref_no = models.CharField(primary_key=True, default=uuid.uuid4().hex[:5].upper(), max_length=50, editable=False)
+
     ref_no = models.UUIDField(primary_key=True, default=uuid.uuid4, max_length=50, editable=True)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     title = models.CharField(_('Title'), max_length=30)
@@ -15,7 +15,6 @@ class Ticket(models.Model):
     cost = models.IntegerField(default=0)
     date = models.DateTimeField()
     approval_status = models.BooleanField(_('Is It Approved ?'), default=False)
-    #status = models.CharField(_('Operation status'), max_length=
     driver = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     class Meta:
