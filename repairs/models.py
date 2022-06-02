@@ -15,13 +15,16 @@ class RepairTicket(Ticket.Ticket):
     # ref = models.CharField('Reference', default=''.join(random.sample(reference_string, 10)), max_length=50)
     #item_maintained = models.CharField(max_length=30)
     frequency = models.IntegerField(default=0)
-    super(Ticket.Ticket)
+    #super(Ticket.Ticket)
 
     class Meta:
-        """Meta definition for Service Ticket."""
+        """Meta definition for Repair Ticket."""
 
         verbose_name = 'Repair Ticket'
         verbose_name_plural = 'Repair Tickets'
+
+        ordering = ("title", "ref_no", "driver", "vehicle", "approval_status", "item_maintained", "frequency", "cost",
+                    "date")
 
     def __str__(self):
         return self.title
