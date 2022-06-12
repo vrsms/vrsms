@@ -1,5 +1,5 @@
 from django.db import models
-from services.models import Vehicle
+from vehicles.models import Vehicle
 from django.utils.translation import ugettext_lazy as _
 from . import Ticket
 

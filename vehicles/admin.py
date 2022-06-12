@@ -2,11 +2,11 @@
 # ==============
 
 from django.contrib import admin
-from django.utils.html import format_html
+from django.db.models import Sum
+
 from repairs.models import RepairTicket
 from services.models import ServiceTicket
 from .models import Vehicle
-from django.db.models import Sum
 
 
 @admin.register(Vehicle)
@@ -15,10 +15,10 @@ class VehicleAdmin(admin.ModelAdmin):
 
     list_display = (
         'plate_number',
-        'category',
         'status',
         'total_repair_cost',
         'total_service_cost',
+
     )
     list_filter = (
         'category',
@@ -26,7 +26,7 @@ class VehicleAdmin(admin.ModelAdmin):
         'status',
     )
 
-    def total_repair_cost(self, obj):
+    def total_repair_cost(self, obj: Vehicle):
         """ Calculate the total service cost for each Vehicle object"""
 
         result = RepairTicket.objects.filter(vehicle=obj).aggregate(Sum("cost"))
@@ -34,7 +34,7 @@ class VehicleAdmin(admin.ModelAdmin):
 
     total_repair_cost.short_description = "Total Repair Costs"
 
-    def total_service_cost(self, obj):
+    def total_service_cost(self, obj: Vehicle):
         """ Calculate the total service cost for each Vehicle object"""
 
         result = ServiceTicket.objects.filter(vehicle=obj).aggregate(Sum("cost"))
