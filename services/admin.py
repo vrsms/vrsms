@@ -1,7 +1,4 @@
 from django.contrib import admin
-from django.urls import reverse
-from django.utils.html import format_html
-from django.utils.http import urlencode
 from .models import ServiceSchedule
 from .models import ServiceTicket
 
@@ -18,7 +15,7 @@ class ServiceTicketAdmin(admin.ModelAdmin):
         'cost',
         'date',
         'approval_status',
-        'view_vehicles_link',
+
 
     )
     list_filter = (
@@ -37,14 +34,4 @@ class ServiceTicketAdmin(admin.ModelAdmin):
 
         return form
 
-    def view_vehicles_link(self, obj):
-        count = obj.vehicle.count('make')
-        #count = obj.person_set.count()
-        url = (
-                reverse("admin:vehicles_vehicle_changelist")
-                + "?"
-                + urlencode({"servicetickets__id": f"{obj.id}"})
-        )
-        return format_html('<a href="{}">{} Vehicles</a>', url, count)
 
-    view_vehicles_link.short_description = "Vehicles"

@@ -3,7 +3,9 @@
 
 from django.contrib import admin
 from django.db.models import Sum
-
+from django.urls import reverse
+from django.utils.html import format_html
+from django.utils.http import urlencode
 from repairs.models import RepairTicket
 from services.models import ServiceTicket
 from .models import Vehicle
@@ -16,6 +18,7 @@ class VehicleAdmin(admin.ModelAdmin):
     list_display = (
         'plate_number',
         'status',
+        'view_service_tickets_link',
         'total_repair_cost',
         'total_service_cost',
 
@@ -41,3 +44,15 @@ class VehicleAdmin(admin.ModelAdmin):
         return result["cost__sum"]
 
     total_service_cost.short_description = "Total Service Costs"
+
+    def view_service_tickets_link(self, obj):
+        count = obj.serviceticket_set.count()
+
+        url = (
+                reverse("admin:services_serviceticket_changelist")
+                + "?"
+                + urlencode({"serviceticket__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}">{} Service Tickets</a>', url, count)
+
+    view_service_tickets_link.short_description = "Service Tickets"
