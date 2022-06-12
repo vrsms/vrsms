@@ -18,6 +18,7 @@ class VehicleAdmin(admin.ModelAdmin):
     list_display = (
         'plate_number',
         'status',
+        'view_repair_tickets_link',
         'view_service_tickets_link',
         'total_repair_cost',
         'total_service_cost',
@@ -45,7 +46,23 @@ class VehicleAdmin(admin.ModelAdmin):
 
     total_service_cost.short_description = "Total Service Costs"
 
-    def view_service_tickets_link(self, obj):
+    def view_repair_tickets_link(self, obj: Vehicle):
+        """ Show all repair tickets linked to this vehicle"""
+
+        count = obj.ticket_set.count()
+
+        url = (
+                reverse("admin:repairs_repairticket_changelist")
+                + "?"
+                + urlencode({"repairticket__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}">{} Repair Tickets</a>', url, count)
+
+    view_repair_tickets_link.short_description = "Repair Tickets"
+
+    def view_service_tickets_link(self, obj: Vehicle):
+        """ Show all service tickets linked to this vehicle"""
+
         count = obj.serviceticket_set.count()
 
         url = (
