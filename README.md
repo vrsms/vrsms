@@ -1,2 +1,2 @@
-# evsrms
-# Electronic Vehicle Service and Repair Management System.
+# vrsms
+# Vehicle Repair and Service Management System.
