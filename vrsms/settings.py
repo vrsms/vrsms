@@ -141,6 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEFAULT_CHARSET = 'utf-8'
 USE_THOUSAND_SEPARATOR = True
 
+
 JAZZMIN_SETTINGS = {
     "site_title": "VRSMS Admin",
     "site_header": "VRSMS",
