@@ -140,6 +140,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEFAULT_CHARSET = 'utf-8'
 USE_THOUSAND_SEPARATOR = True
+LOGOUT_REDIRECT_URL = '/'
 
 
 JAZZMIN_SETTINGS = {
