@@ -150,7 +150,7 @@ JAZZMIN_SETTINGS = {
     "site_logo": "images/logo.png",
     "welcome_sign": "Welcome to the VRSMS",
     # Copyright on the footer
-    "copyright": "VRSMS",
+    "copyright": "Vehicle Repair and Service Management System(VRSMS)",
     "user_avatar": None,
     ############
     # Top Menu #
