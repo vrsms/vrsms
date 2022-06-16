@@ -78,19 +78,6 @@
 
 {% block content %}
 
-<div style="margin-left: 200px;">
-{% if  user.is_authenticated %}
-    <p> {{ user.username }} TODO</p>
-
-    <ul>
-        <li><p><a href="{% url 'admin:index' %}">Vehicle Services</a></p></li>
-        <li><p><a href="{% url 'admin:index' %}">Vehicle Repairs</a></p></li>
-        <li><p><a href="{% url 'admin:logout' %}">Suggestion Box</a></p></li>
-    </ul>
-
-
-
-{% else %}
     <!-- MAIN (Center website) -->
     <div class="main">
     <div class="flex-container" style="flex-direction: row">
@@ -141,7 +128,7 @@
 
         <!-- END MAIN -->
     </div>
-{% endif %}
+
 <!-- JavaScript Bundle with Popper -->
 <script crossorigin="anonymous"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
