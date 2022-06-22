@@ -1,9 +1,9 @@
 {% extends 'admin/change_list.html' %}
 
 {% block object-tools %}
-    {% url 'some_view' as pakua %}
-    <button> <a href="{{ pakua }}">Download Service Tickets</a></button>
-    <div>
+    {% url 'vehicles:download_report' as report %}
+    <button> <a href="{{ report }}">Download Service Tickets</a></button>
+    <!--div>
         <form action="immortal/" method="POST">
             {% csrf_token %}
                 <button type="submit">Make Immortal</button>
@@ -13,7 +13,7 @@
             {% csrf_token %}
                 <button type="submit">Make Mortal</button>
         </form>
-    </div>
+    </div-->
     <br />
     {{ block.super }}
 {% endblock object-tools %}
