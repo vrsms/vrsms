@@ -20,7 +20,7 @@ def index(request: WSGIRequest) -> HttpResponse | Http404:
     return render(request, 'vehicles/index.html')
 
 
-def some_view(request):
+def download_report(request):
     # Create a file-like buffer to receive PDF data.
     buffer = io.BytesIO()
 

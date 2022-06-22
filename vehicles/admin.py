@@ -85,13 +85,8 @@ class VehicleAdmin(admin.ModelAdmin):
 
         count = obj.serviceticket_set.count()
 
-        url = (
-                reverse("admin:services_serviceticket_changelist")
-                + "?"
-                + urlencode({"serviceticket__id": f"{obj.id}"})
-        )
-        k=67
-        return format_html('<a href="{}">{} mDownload {} Service Tickets</a>', url, count,k)
+        url = reverse("vehicles:download_report")
+        return format_html('<a href="{}"> Download {} Service Tickets</a>', url, count,)
 
     download.short_description = "Download Service Tickets"
 
