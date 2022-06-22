@@ -67,10 +67,8 @@ ROOT_URLCONF = 'vrsms.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates'
-        ,
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,7 +139,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEFAULT_CHARSET = 'utf-8'
 USE_THOUSAND_SEPARATOR = True
 LOGOUT_REDIRECT_URL = '/'
-
 
 JAZZMIN_SETTINGS = {
     "site_title": "VRSMS Admin",
