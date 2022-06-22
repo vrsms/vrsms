@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import ServiceSchedule
 from .models import ServiceTicket
+import mawio
 
 # Register your models here.
 admin.site.register(ServiceSchedule)
@@ -15,7 +16,6 @@ class ServiceTicketAdmin(admin.ModelAdmin):
         'cost',
         'date',
         'approval_status',
-
 
     )
     list_filter = (
@@ -34,4 +34,7 @@ class ServiceTicketAdmin(admin.ModelAdmin):
 
         return form
 
-
+    def save_model(self, request, obj, form, change):
+        # obj.added_by = request.user
+        mawio.notify()
+        super().save_model(request, obj, form, change)
