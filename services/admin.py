@@ -11,18 +11,8 @@ admin.site.register(ServiceSchedule)
 class ServiceTicketAdmin(admin.ModelAdmin):
     """Admin View for Service Ticket"""
 
-    list_display = (
-        'title',
-        'cost',
-        'date',
-        'approval_status',
-
-    )
-    list_filter = (
-        'title',
-        'cost',
-        'approval_status',
-    )
+    list_display = ('title', 'approval_status', 'date', 'cost',)
+    list_filter = ('date', 'approval_status',)
     fields = ("ref_no", "title", "driver", "vehicle", "approval_status", "item_serviced", "frequency", "cost", "date")
 
     def get_form(self, request, obj=None, **kwargs):
@@ -38,3 +28,13 @@ class ServiceTicketAdmin(admin.ModelAdmin):
         # obj.added_by = request.user
         mawio.notify()
         super().save_model(request, obj, form, change)
+
+    actions = ["mark_approved"]
+
+    def mark_approved(self, request, queryset):
+        queryset.update(approval_status=True)
+
+
+
+
+
