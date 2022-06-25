@@ -30,8 +30,8 @@ def notify():
         <p>Hi,<br>
            How are you?<br>
            You have a new ticket. 
-           <a href="http://127.0.0.1:8000/admin/login/">Please attend the ticket</a> 
-           Integrity is our Motto.
+           <a href="http://127.0.0.1:8000/admin/login/">Please attend the ticket,</a> 
+           integrity is our Motto.
            <div id="footer"><div style="text-align: center">
             <p>Crafted with <span style="color:red;">&hearts;</span> from University of Dar es Salaam.</p>
     <p><a href="https://github.com/evsmms/evmms/tree/v0.0.0-alpha">v0.0.0-alpha</a>
