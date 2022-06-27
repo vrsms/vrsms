@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import ServiceSchedule
 from .models import ServiceTicket
 import mawio
+from django.http import HttpResponse
+import csv
 
 # Register your models here.
 admin.site.register(ServiceSchedule)
@@ -29,10 +31,26 @@ class ServiceTicketAdmin(admin.ModelAdmin):
         mawio.notify()
         super().save_model(request, obj, form, change)
 
-    actions = ["mark_approved"]
+    actions = ["mark_approved", "export_as_csv",]
 
     def mark_approved(self, request, queryset):
         queryset.update(approval_status=True)
+
+    mark_approved.short_description = "Mark Approved"
+
+    def export_as_csv(self, request, queryset):
+        meta = self.model._meta
+        field_names = [field.name for field in meta.fields]
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+        writer = csv.writer(response)
+        writer.writerow(field_names)
+
+        for obj in queryset:
+            row = writer.writerow([getattr(obj, field) for field in field_names])
+        return response
+
+    export_as_csv.short_description = "Export Selected"
 
 
 
