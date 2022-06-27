@@ -19,8 +19,8 @@ class ServiceTicket(models.Model):
     title = models.CharField(_('Title'), max_length=30)
     approval_status = models.BooleanField(_('Is It Approved ?'), default=False)
     item_serviced = models.CharField(max_length=30)
-    frequency = models.IntegerField(default=0)
-    cost = models.IntegerField(default=0)
+    frequency = models.PositiveBigIntegerField(default=0)
+    cost = models.PositiveBigIntegerField(default=0)
     date = models.DateTimeField()
 
     class Meta:
