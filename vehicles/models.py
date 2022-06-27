@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 class Vehicle(models.Model):
     """Model definition for Vehicle."""
 
-    plate_number = models.CharField(_('Plate Number'), max_length=30, help_text=_('Enter plate number of the car'))
+    plate_number = models.CharField(_('Plate Number'), max_length=30, help_text=_('Enter plate number of the vehicle'))
     driver = models.ForeignKey(User, on_delete=models.CASCADE)
     make = models.CharField(_("Make"), max_length=30)
     model = models.CharField(_('Vehicle Model'), max_length=30)

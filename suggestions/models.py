@@ -9,7 +9,7 @@ class Suggestion(models.Model):
 
     title = models.CharField(_('Title'), max_length=50)
     content = models.TextField(_('Content'))
-    is_publishable = models.BooleanField(_('Is Publishable ?'), default=False)
+    is_publishable = models.BooleanField(_('Approval Status'), default=False)
     created_at = models.DateTimeField(_('Created at '), auto_now_add=True)
     updated_at = models.DateTimeField(_('Updated at '), auto_now=True)
 

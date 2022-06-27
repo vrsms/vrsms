@@ -19,7 +19,7 @@ class ServiceTicketAdmin(admin.ModelAdmin):
     list_filter = ('date', 'approval_status',)
     fields = ("ref_no", "title", "driver", "vehicle", "approval_status", "item_serviced", "frequency", "cost", "date")
     change_list_template = "services/services_changelist.html"
-    list_per_page = 250
+    list_per_page = 1
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
