@@ -26,14 +26,8 @@ class VehicleAdmin(admin.ModelAdmin):
         'view_service_tickets_link',
         'total_repair_cost',
         'total_service_cost',
-        'download',
-
-    )
-    list_filter = (
-        'category',
-        'make',
-        'status',
-    )
+        )
+    list_filter = ('category', 'make', 'status', )
     change_list_template = "vehicles/vehicles_changelist.html"
 
     def total_repair_cost(self, obj: Vehicle):
@@ -79,31 +73,3 @@ class VehicleAdmin(admin.ModelAdmin):
         return format_html('<a href="{}">{} Service Tickets</a>', url, count)
 
     view_service_tickets_link.short_description = "Service Tickets"
-
-    def download(self, obj: Vehicle):
-        """ Download all service tickets linked to this vehicle"""
-
-        count = obj.serviceticket_set.count()
-
-        url = reverse("vehicles:download_report")
-        return format_html('<a href="{}"> Download {} Service Tickets</a>', url, count,)
-
-    download.short_description = "Download Service Tickets"
-
-    def get_urls(self):
-        urls = super().get_urls()
-        my_urls = [
-            path('immortal/', self.set_immortal),
-            path('mortal/', self.set_mortal),
-        ]
-        return my_urls + urls
-
-    def set_immortal(self, request):
-        self.model.objects.all().update(is_immortal=True)
-        self.message_user(request, "All heroes are now immortal")
-        return HttpResponseRedirect("../")
-
-    def set_mortal(self, request):
-        self.model.objects.all().update(is_immortal=False)
-        self.message_user(request, "All heroes are now mortal")
-        return HttpResponseRedirect("../")
