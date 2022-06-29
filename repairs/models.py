@@ -9,7 +9,7 @@ class RepairTicket(Ticket.Ticket):
     """Model definition for Repair Ticket."""
 
     super(Ticket.Ticket)
-    frequency = models.IntegerField(_('frequency'), default=0)
+    frequency = models.PositiveSmallIntegerField(_('frequency'), default=0)
 
     class Meta:
         """Meta definition for Repair Ticket."""

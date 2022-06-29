@@ -10,9 +10,9 @@ class Ticket(models.Model):
 
     ref_no = models.UUIDField(primary_key=True, default=uuid.uuid4, max_length=50, editable=True)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
-    title = models.CharField(_('Title'), max_length=30)
+    title = models.CharField(_('Title'), max_length=100)
     item_maintained = models.CharField(max_length=30)
-    cost = models.IntegerField(default=0)
+    cost = models.PositiveBigIntegerField(default=0)
     date = models.DateTimeField()
     approval_status = models.BooleanField(_('Is It Approved ?'), default=False)
     driver = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)

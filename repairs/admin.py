@@ -8,18 +8,11 @@ from .models import RepairTicket
 class RepairTicketAdmin(admin.ModelAdmin):
     """Admin View for Repair Ticket"""
 
-    list_display = (
-        'title',
-        'cost',
-        'date',
-        'approval_status',
-    )
-    list_filter = (
-        'title',
-        'cost',
-        'approval_status',
-    )
+    list_display = ('title', 'cost', 'date', 'approval_status',)
+    list_filter = ('date', 'approval_status',)
     fields = ("ref_no", "title", "driver", "vehicle", "approval_status", "item_maintained", "frequency", "cost", "date")
+    list_per_page = 10
+    date_hierarchy = 'date'
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
