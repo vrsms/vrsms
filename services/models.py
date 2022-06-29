@@ -3,7 +3,6 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
 from vehicles.models import Vehicle
 
 
@@ -47,6 +46,16 @@ class ServiceSchedule(models.Model):
         ("60000", "60k"),
         ("90000", "90k"),
         )
-    ref = models.CharField(_('Reference'), max_length=30)
+    schedule_name = models.CharField(_('Schedule Name'), max_length=100)
     ref_no = models.UUIDField(primary_key=True, default=uuid.uuid4, max_length=50, editable=True)
     service_mark = models.CharField(max_length=250, null=False, choices=CHOICES)
+
+    def __str__(self):
+        return self.schedule_name
+
+    class Meta:
+        """Meta definition for Service Schedule."""
+
+        verbose_name = 'Service Schedule'
+        verbose_name_plural = 'Service Schedules'
+
