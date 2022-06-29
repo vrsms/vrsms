@@ -1,5 +1,5 @@
+from __future__ import unicode_literals
 import uuid
-
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -42,4 +42,11 @@ class ServiceTicket(models.Model):
 
 
 class ServiceSchedule(models.Model):
+    CHOICES = (
+        ("30000", "30k"),
+        ("60000", "60k"),
+        ("90000", "90k"),
+        )
     ref = models.CharField(_('Reference'), max_length=30)
+    ref_no = models.UUIDField(primary_key=True, default=uuid.uuid4, max_length=50, editable=True)
+    service_mark = models.CharField(max_length=250, null=False, choices=CHOICES)
