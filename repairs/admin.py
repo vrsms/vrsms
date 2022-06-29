@@ -31,7 +31,7 @@ class RepairTicketAdmin(admin.ModelAdmin):
         Override save button
         Send email to the fleet manager when saving
         """
-        mawio.notify()
+       # mawio.notify()
         super().save_model(request, obj, form, change)
 
     actions = ["mark_approved", "export_as_csv", "mark_rejected", ]
