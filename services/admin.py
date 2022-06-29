@@ -19,7 +19,8 @@ class ServiceTicketAdmin(admin.ModelAdmin):
     list_filter = ('date', 'approval_status',)
     fields = ("ref_no", "title", "driver", "vehicle", "approval_status", "item_serviced", "frequency", "cost", "date")
     change_list_template = "services/services_changelist.html"
-    list_per_page = 1
+    list_per_page = 10
+    date_hierarchy = 'date'
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
@@ -38,11 +39,13 @@ class ServiceTicketAdmin(admin.ModelAdmin):
     actions = ["mark_approved", "export_as_csv", "mark_rejected", ]
 
     def mark_approved(self, request, queryset):
+        self.message_user(request, "Selected service tickets are now approved")
         queryset.update(approval_status=True)
 
     mark_approved.short_description = "Approve Selected Service Tickets"
 
     def mark_rejected(self, request, queryset):
+        self.message_user(request, "Selected service tickets are now disapproved")
         queryset.update(approval_status=False)
 
     mark_rejected.short_description = "Reject Selected Service Tickets"
